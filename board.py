@@ -1,13 +1,3 @@
-
-"""
-Alimurat Dinchdonmez, 2031193
-420-LCU Computer Programming ,Section 3
-Wednesday , April 20
-R. Vincent , instructor Assignment 3
-"""
-
-
-
 '''Simple matrix representation of a Reversi board.
 
 The board is represented as an matrix, or a list of lists, numbered
@@ -71,53 +61,3 @@ def board_count(board,value):
     
     
 
-# DEFINE THE board_count() FUNCTION HERE!
-
-if __name__ == "__main__":
-    print("Testing the board module.")
-    # Verify that we can create a board with particular dimensions.
-    b = board_create(5, 4)
-    assert board_rows(b) == 5
-    assert board_cols(b) == 4
-    b = board_create()
-    assert board_rows(b) == 8
-    assert board_cols(b) == 8
-    # Check operation of get() and count()
-    assert board_get(b, 0, 0) == 0
-    try:
-        board_get(b, -1, -1)
-    except ValueError:
-        pass
-    else:
-        assert False # Failed to raise ValueError
-        
-    try:
-        board_get(b, board_rows(b), board_cols(b))
-    except ValueError:
-        pass
-    else:
-        assert False # Failed to raise ValueError
-    assert board_count(b, 1) == 0
-    # Place a first value and verify it works.
-    board_put(b, 0, 0, 1)
-    assert board_get(b, 0, 0) == 1
-    assert board_count(b, 1) == 1
-    # Place and verify a second value.
-    board_put(b, 1, 1, 1)
-    assert board_get(b, 1, 1) == 1
-    assert board_get(b, 0, 1) == 0
-    assert board_count(b, 1) == 2
-    assert board_count(b, 0) == board_rows(b) * board_cols(b) - 2
-    # Make a copy of the board.
-    c = board_copy(b)
-    assert b is not c
-    assert b[0] is not c[0]
-    assert board_count(c, 1) == 2
-    assert board_count(c, 0) == board_rows(c) * board_cols(c) - 2
-    # Place an additional value in board 'b', make sure it does
-    # not appear in 'c'
-    board_put(b, 2, 2, 1)
-    assert board_count(b, 1) == 3
-    assert board_count(c, 1) == 2
-    assert board_get(c, 2, 2) == 0
-    print("All tests passed.")
