@@ -1,12 +1,3 @@
-
-
-"""
-Alimurat Dinchdonmez, 2031193
-420-LCU Computer Programming ,Section 3
-Wednesday , April 20
-R. Vincent , instructor Assignment 3
-"""
-
 '''User interface code for Reversi
 
 Includes the main program, so this is the file to run to play a game.
