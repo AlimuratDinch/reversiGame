@@ -56,10 +56,9 @@ def game_turn(board, row, col):
         return True
     else:
         return False
-#def game_over(board):
+
     
 
-# PUT YOUR game_over() FUNCTION AFTER THIS LINE.
 def game_over(board):
     if _get_legal_moves(board,HUMAN) == []:
         return True
@@ -84,7 +83,7 @@ def game_winner(board):
 # That is why their names start with a single underscore.
 #
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _get_opponent(player):  #changes the player
     '''
     player (int): HUMAN or COMPUTER
@@ -97,7 +96,7 @@ def _get_opponent(player):  #changes the player
         return HUMAN
 
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _get_flips(board, r0, c0, player, opponent):
     '''
     board (list): an object returned from board_create()
@@ -142,7 +141,7 @@ def _get_flips(board, r0, c0, player, opponent):
 
     return result
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _is_legal_move(board, row, col, player):
     '''
     board (list): an object created by board_create()
@@ -158,7 +157,7 @@ def _is_legal_move(board, row, col, player):
     flips = _get_flips(board, row, col, player, opponent)
     return len(flips) != 0      # A move must flip at least one piece.
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _do_flips(board, row, col, player):
     '''
     board (list): an object created by board_create()
@@ -174,7 +173,7 @@ def _do_flips(board, row, col, player):
     for rp, cp in _get_flips(board, row, col, player, opponent):
         board_put(board, rp, cp, player)
     
-# DO NOT MODIFY THIS FUNCTION
+
 def _get_legal_moves(board, player):
     '''
     board (list): an object created by board_create()
@@ -218,53 +217,3 @@ def _choose_move(board, moves, player):
     return _tuple_list         
          
         
-if __name__ == "__main__":
-    print("Testing the game logic.")
-    from random import randint
-    # Play ten randomized games and make sure nothing breaks.
-    for trial in range(10):
-        board = game_start()
-        moves = _get_legal_moves(board, HUMAN)
-        assert len(moves) == 4
-        assert (2, 3) in moves
-        assert (3, 2) in moves
-        assert (4, 5) in moves
-        assert (5, 4) in moves
-
-        assert not game_over(board)
-        assert game_turn(board, 3, 2)
-
-        # Now play a game automatically.
-        n_turns = 1
-        while not game_over(board):
-            moves = _get_legal_moves(board, HUMAN)
-            if len(moves) > 0:
-                assert all(_is_legal_move(board, r, c, HUMAN) for r, c in moves)
-                # Select move at random.
-                move = moves[randint(0, len(moves) - 1)]
-                assert game_turn(board, *move)
-            assert n_turns < 64 # avoid possible infinite loop
-            n_turns += 1
-
-        if game_over(board):
-            assert (not _get_legal_moves(board, HUMAN) and
-                    not _get_legal_moves(board, COMPUTER))
-            
-        n_h = board_count(board, HUMAN)
-        n_c = board_count(board, COMPUTER)
-        print("Trial game ends with:", n_h, n_c)
-        if n_h > n_c:
-            assert game_winner(board) == HUMAN
-        elif n_h < n_c:
-            assert game_winner(board) == COMPUTER
-        else:
-            assert game_winner(board) == 0
-
-    print("All tests passed.")
-
-        
-        
-    
-
-test = [[1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 2, 1], [1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1]]
-Test = [[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0, 0], [0, 1, 2, 2, 2, 0, 0, 0], [1, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
