@@ -1,11 +1,3 @@
-
-"""
-Alimurat Dinchdonmez, 2031193
-420-LCU Computer Programming ,Section 3
-Wednesday , April 20
-R. Vincent , instructor Assignment 3
-"""
-
 '''Implements the logic for the game Reversi, based on the "Othello"
 version trademarked by Mattel.'''
 
@@ -14,7 +6,7 @@ from board import *
 HUMAN = 1
 COMPUTER = 2
 
-# DO NOT MODIFY THIS FUNCTION
+
 def game_start():
     '''Create and initialize the game data.
 
@@ -30,7 +22,7 @@ def game_start():
     # Return the newly-created board object.
     return board
 
-# DO NOT MODIFY THIS FUNCTION
+
 def game_turn(board, row, col):
     '''
     board (list): an object returned by board_create()
@@ -71,7 +63,7 @@ def game_turn(board, row, col):
     else:
         return False
 
-# PUT YOUR game_over() FUNCTION AFTER THIS LINE.
+
 def game_over(board):
     '''Signalize the finish of the game'''
     if _get_legal_moves(board,HUMAN) == []:
@@ -80,7 +72,7 @@ def game_over(board):
         return False
            
         
-# PUT YOUR game_winner() FUNCTION AFTER THIS LINE.
+
 def game_winner(board):
     '''Dispayin the winner of the game'''
     if board_count(board,2) < board_count(board,1):
@@ -96,7 +88,7 @@ def game_winner(board):
 # That is why their names start with a single underscore.
 #
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _get_opponent(player):  #changes the player
     '''
     player (int): HUMAN or COMPUTER
@@ -108,7 +100,7 @@ def _get_opponent(player):  #changes the player
     else:
         return HUMAN
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _get_flips(board, r0, c0, player, opponent):
     '''
     board (list): an object returned from board_create()
@@ -153,7 +145,7 @@ def _get_flips(board, r0, c0, player, opponent):
 
     return result
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _is_legal_move(board, row, col, player):
     '''
     board (list): an object created by board_create()
@@ -169,7 +161,7 @@ def _is_legal_move(board, row, col, player):
     flips = _get_flips(board, row, col, player, opponent)
     return len(flips) != 0      # A move must flip at least one piece.
 
-# DO NOT MODIFY THIS FUNCTION
+
 def _do_flips(board, row, col, player):
     '''
     board (list): an object created by board_create()
@@ -185,7 +177,7 @@ def _do_flips(board, row, col, player):
     for rp, cp in _get_flips(board, row, col, player, opponent):
         board_put(board, rp, cp, player)
     
-# DO NOT MODIFY THIS FUNCTION
+
 def _get_legal_moves(board, player):
     '''
     board (list): an object created by board_create()
@@ -201,7 +193,7 @@ def _get_legal_moves(board, player):
                 result += [(row, col)]
     return result
 
-# PUT YOUR _choose_move() FUNCTION AFTER THIS LINE.
+
 
 def _choose_move(board, moves, player):
     '''Choose the best move available'''
@@ -230,8 +222,8 @@ def _choose_move(board, moves, player):
     return _tuple_list         
 
 
-# TESTING CODE. DO NOT CHANGE ANYTHING AFTER THIS LINE!!
-# When running standalone, run a few tests of the provided functions.
+
+# few tests of the provided functions.
 
 if __name__ == "__main__":
     print("Testing the game logic.")
